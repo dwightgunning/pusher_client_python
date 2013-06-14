@@ -86,7 +86,7 @@ class Channel(object):
         query_string = self.signed_query(event, json_data, socket_id)
         signed_path = "%s?%s" % (self.path, query_string)
         status = self.send_request(signed_path, json_data)
-        if status == 200:
+        if status == 200 or status == 201 or status == 202:
             return True
         elif status == 401:
             raise AuthenticationError
